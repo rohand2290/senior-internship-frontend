@@ -4,6 +4,9 @@ import DataTable from "react-data-table-component";
 
 const Table = () => {
   const [rows, setRows] = useState([])
+  let clickHandler = () => {
+    console.log("hi")
+  }
   useEffect(() => {
     axios.get("http://localhost:8080/2019")
       .then(response => setRows(response.data))
@@ -12,6 +15,14 @@ const Table = () => {
 
 
   const columns2019 = [
+    {
+      name: "Action",
+      selector: (row: any) => row["action"],
+      cell: () => <a href="#" onClick={clickHandler}>Action</a>,
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
     {
       name: "index",
       selector: (row: any) => row["index"],
@@ -134,7 +145,7 @@ const Table = () => {
         columns={columns2019}
         data={rows}
         fixedHeader
-        title="React Tutorial"
+        title="2019 Data"
         pagination
         selectableRows
       />

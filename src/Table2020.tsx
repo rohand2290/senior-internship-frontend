@@ -80,7 +80,7 @@ const Table2020 = () => {
         columns={columns2020}
         data={rows}
         fixedHeader
-        title="React Tutorial"
+        title="2020 Data"
         pagination
         selectableRows
       />
